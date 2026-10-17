@@ -1,0 +1,318 @@
+:root {
+  --cursor-base: #141414;
+  --cursor-editor: #fcfcfc;
+  --cursor-chrome: #f5f5f5;
+  --cursor-text-primary: var(--cursor-base);
+  --cursor-text-secondary: color-mix(
+    in oklab,
+    var(--cursor-base) 74%,
+    transparent
+  );
+  --cursor-text-tertiary: color-mix(
+    in oklab,
+    var(--cursor-base) 60%,
+    transparent
+  );
+  --cursor-text-quaternary: color-mix(
+    in oklab,
+    var(--cursor-base) 36%,
+    transparent
+  );
+  --cursor-bg-tertiary: color-mix(in oklab, var(--cursor-base) 8%, transparent);
+  --cursor-border-secondary: color-mix(
+    in oklab,
+    var(--cursor-base) 12%,
+    transparent
+  );
+  --cursor-border-tertiary: color-mix(
+    in oklab,
+    var(--cursor-base) 8%,
+    transparent
+  );
+  --cursor-composer-hairline: color-mix(
+    in oklab,
+    var(--cursor-border-secondary) 55%,
+    var(--cursor-border-tertiary)
+  );
+  --cursor-font-family:
+    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --cursor-font-size: 13px;
+  --cursor-control-radius: 9999px;
+  --cursor-card-radius: 12px;
+  --cursor-success: #3fa266;
+  --cursor-success-quaternary: color-mix(
+    in oklab,
+    var(--cursor-success) 8%,
+    transparent
+  );
+}
+
+:root.dark {
+  --cursor-base: #f0f0f0;
+  --cursor-editor: #181818;
+  --cursor-chrome: #141414;
+}
+
+:where(.cursor-composer) {
+  background: var(--cursor-editor);
+  color: var(--cursor-text-primary);
+  border: 0;
+  border-radius: var(--cursor-card-radius);
+  box-shadow:
+    inset 0 0 0 1px var(--cursor-composer-hairline),
+    0 1px 4px #00000006;
+  backdrop-filter: blur(4px);
+  font-family: var(--cursor-font-family);
+  font-size: var(--cursor-font-size);
+  line-height: 18px;
+  transition: box-shadow 150ms ease;
+}
+
+:where(.cursor-composer):focus-within {
+  box-shadow:
+    inset 0 0 0 1px var(--cursor-border-secondary),
+    0 2px 10px -2px color-mix(in srgb, #0000001f 40%, #0000000f);
+}
+
+:where(.cursor-composer:not([data-promptbox-compact]))
+  [data-promptbox-editor-scroll] {
+  padding: 12px;
+  font-size: var(--cursor-font-size);
+  font-weight: 400;
+  line-height: 18px;
+}
+
+:where(.cursor-composer) .ProseMirror {
+  font-family: var(--cursor-font-family);
+  line-height: 18px;
+}
+
+:where(.cursor-composer) .ProseMirror p.is-editor-empty:first-child::before {
+  color: var(--cursor-text-quaternary);
+  opacity: 1;
+  font-weight: 400;
+}
+
+:where(.cursor-composer:not([data-promptbox-compact]))
+  [data-promptbox-action-row] {
+  padding: 12px;
+  gap: 12px;
+  min-height: 48px;
+}
+
+:where(.cursor-composer:not([data-promptbox-compact]))
+  [data-promptbox-action-row]
+  > [data-promptbox-expanded-only] {
+  gap: 12px;
+}
+
+:where(.cursor-composer) [data-promptbox-action-row] button {
+  height: 24px;
+  min-height: 24px;
+  border-radius: var(--cursor-control-radius);
+  font-family: var(--cursor-font-family);
+  font-size: var(--cursor-font-size);
+  font-weight: 400;
+  line-height: 18px;
+  color: var(--cursor-text-secondary);
+}
+
+:where(.cursor-composer) [data-promptbox-action-row] button:hover {
+  background: var(--cursor-bg-tertiary);
+  color: var(--cursor-text-primary);
+}
+
+:where(.cursor-composer) [data-promptbox-action-row] button[aria-haspopup] {
+  padding-inline: 8px 6px;
+  gap: 4px;
+}
+
+:where(.cursor-composer)
+  [data-promptbox-action-row]
+  [data-promptbox-submit-action] {
+  width: 24px;
+  min-width: 24px;
+  height: 24px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--cursor-control-radius);
+  color: var(--cursor-editor);
+  background: var(--cursor-base);
+}
+
+:where(.cursor-composer) [data-promptbox-submit-action]:disabled {
+  background: color-mix(in oklab, var(--cursor-base) 24%, transparent);
+  opacity: 1;
+}
+
+:where(.cursor-composer)
+  [data-promptbox-action-row]
+  [data-promptbox-submit-action]:hover:not(:disabled) {
+  background: color-mix(in oklab, var(--cursor-chrome) 10%, var(--cursor-base));
+  color: var(--cursor-editor);
+}
+
+:where(.cursor-composer)
+  [data-promptbox-submit-action]:has([data-promptbox-submit-label]) {
+  width: auto;
+  padding-inline: 8px;
+  gap: 4px;
+}
+
+:where(.cursor-composer) [data-promptbox-submit-action] svg {
+  width: 14px;
+  height: 14px;
+}
+
+:where(.cursor-composer) [data-promptbox-send-menu] {
+  background: transparent;
+  color: var(--cursor-text-secondary);
+  gap: 4px;
+}
+
+:where([data-cursor-new-composer], [data-follow-up-composer])
+  [data-new-thread-footer],
+:where([data-follow-up-composer]) [data-follow-up-composer-footer] {
+  font-family: var(--cursor-font-family);
+  color: var(--cursor-text-secondary);
+  gap: 8px;
+  padding-inline: 6px;
+  margin-bottom: 12px;
+}
+
+:where([data-new-thread-footer], [data-follow-up-composer-footer]) button {
+  font-family: var(--cursor-font-family);
+  font-size: var(--cursor-font-size);
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.08px;
+  border-radius: 4px;
+  color: var(--cursor-text-secondary);
+  padding-inline: 6px;
+  gap: 6px;
+  height: 20px;
+}
+
+:where([data-new-thread-footer], [data-follow-up-composer-footer])
+  button:hover {
+  background: var(--cursor-bg-tertiary);
+  color: var(--cursor-text-primary);
+}
+
+:where(.cursor-composer) [aria-label="Prompt actions"] {
+  width: 24px;
+  min-width: 24px;
+  padding: 0 !important;
+  margin-left: 0;
+  background: var(--cursor-bg-tertiary);
+  color: var(--cursor-text-tertiary);
+}
+
+:where([data-cursor-picker]) {
+  --background: var(--cursor-editor);
+  --foreground: var(--cursor-text-primary);
+  --popover: var(--cursor-editor);
+  --popover-foreground: var(--cursor-text-primary);
+  --muted-foreground: var(--cursor-text-secondary);
+  --subtle-foreground: var(--cursor-text-tertiary);
+  --border: var(--cursor-border-tertiary);
+  --state-hover: var(--cursor-bg-tertiary);
+  --state-active: var(--cursor-bg-tertiary);
+  background: var(--cursor-editor);
+  color: var(--cursor-text-primary);
+  border: 1px solid var(--cursor-border-tertiary);
+  border-radius: 8px;
+  padding: 4px;
+  box-shadow: 0 8px 32px #0005;
+  font-family: var(--cursor-font-family);
+  font-size: 13px;
+}
+
+:where([data-cursor-picker]) [role="menuitem"],
+:where([data-cursor-picker]) [role="menuitemcheckbox"],
+:where([data-cursor-picker]) [role="option"] {
+  min-height: 28px;
+  border-radius: 8px;
+  padding: 0 8px;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+:where([data-cursor-picker]) input {
+  font-family: var(--cursor-font-family);
+  font-size: 13px;
+  background: transparent;
+  border-radius: 4px;
+}
+
+:where([data-cursor-picker="context"]) {
+  width: 288px;
+}
+
+:where([data-cursor-picker="model"]) {
+  width: 320px;
+  max-height: min(430px, var(--radix-popover-content-available-height, 430px));
+}
+
+:where([data-cursor-picker="context"]) {
+  max-height: min(
+    430px,
+    var(--radix-dropdown-menu-content-available-height, 430px)
+  );
+  overflow-y: auto;
+}
+
+:where(.cursor-composer) [data-icon-root] {
+  width: 14px;
+  height: 14px;
+}
+
+:where(.cursor-composer) [aria-label="Prompt actions"] {
+  color: color-mix(in oklab, var(--cursor-base) 66%, transparent);
+}
+
+:where(.cursor-composer) [aria-label^="Provider, model and reasoning"] {
+  background: transparent;
+}
+
+:where(.cursor-composer) [data-model-trigger-provider] {
+  display: none;
+}
+
+:where(.cursor-composer) [data-model-trigger-chevron] {
+  width: 11px;
+  height: 11px;
+}
+
+@media (max-width: 767px) and (pointer: coarse) {
+  :where(.cursor-composer) [data-promptbox-editor-scroll],
+  :where(.cursor-composer) .ProseMirror {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  :where(.cursor-composer) [data-promptbox-action-row] button {
+    height: 40px;
+    min-height: 40px;
+  }
+
+  :where(.cursor-composer) [data-promptbox-submit-action],
+  :where(.cursor-composer) [aria-label="Prompt actions"] {
+    width: 40px;
+    min-width: 40px;
+  }
+
+  :where([data-new-thread-footer], [data-follow-up-composer-footer]) button {
+    min-height: 36px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.cursor-composer) {
+    transition: none;
+  }
+}

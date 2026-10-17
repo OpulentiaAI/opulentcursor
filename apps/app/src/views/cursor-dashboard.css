@@ -1,0 +1,102 @@
+@media (min-width: 768px) {
+  :where([data-cursor-dashboard]) .cursor-dashboard-column {
+    max-width: 672px;
+    padding-top: 72px;
+    padding-bottom: 48px;
+  }
+
+  :where([data-cursor-dashboard]) .cursor-dashboard-setup {
+    display: flex;
+    margin-top: 12px;
+  }
+
+  :where([data-cursor-dashboard]) .cursor-cloud-setup {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 32px;
+    padding-inline: 12px;
+    border: 1px solid transparent;
+    border-radius: var(--cursor-control-radius);
+    background: var(--cursor-success-quaternary);
+    color: var(--cursor-success);
+    font-family: var(--cursor-font-family);
+    font-size: var(--cursor-font-size);
+    font-weight: 400;
+    line-height: 18px;
+    text-decoration: none;
+  }
+
+  :where([data-cursor-dashboard]) .cursor-cloud-setup:hover,
+  :where([data-cursor-dashboard]) .cursor-cloud-setup:focus-visible {
+    border-color: var(--cursor-border-tertiary);
+  }
+
+  :where([data-cursor-dashboard-recents]) {
+    margin-top: 58px;
+    font-family: var(--cursor-font-family);
+    font-size: var(--cursor-font-size);
+    line-height: 18px;
+  }
+
+  :where([data-cursor-dashboard-recents]) [data-root-compose-mobile-recents] {
+    display: block;
+  }
+
+  :where([data-cursor-dashboard-recents])
+    [data-root-compose-mobile-recents]
+    > div:first-child {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  :where([data-cursor-dashboard-recents]) ul {
+    display: grid;
+    gap: 4px;
+  }
+
+  :where([data-cursor-dashboard-recents]) li {
+    min-height: 98px;
+    height: auto;
+    padding-block: 6px;
+    padding-right: 6px;
+    gap: 16px;
+    margin-block: 2px;
+    border-radius: 16px;
+  }
+
+  :where([data-cursor-dashboard-recents]) [data-recent-thread-collapse] {
+    width: 158px;
+    height: 84px;
+  }
+
+  :where([data-cursor-dashboard-recents]) li > a {
+    min-height: 68px;
+    gap: 20px;
+  }
+
+  :where([data-cursor-dashboard-recents]) [data-recent-thread-tile] {
+    width: 134px;
+    height: 84px;
+    border-radius: 10px;
+    background: var(--cursor-editor);
+    border-color: var(--cursor-border-tertiary);
+  }
+
+  @supports (corner-shape: squircle) {
+    :where([data-cursor-dashboard-recents]) [data-recent-thread-tile] {
+      border-radius: 16px;
+      corner-shape: squircle;
+    }
+  }
+
+  :where([data-cursor-dashboard-recents]) li > a > span:first-child {
+    background: transparent;
+  }
+}

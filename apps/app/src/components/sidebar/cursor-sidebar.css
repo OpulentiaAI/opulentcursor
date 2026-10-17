@@ -1,0 +1,100 @@
+:where([data-cursor-sidebar="expanded"]) {
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  background: var(--sidebar);
+}
+
+:where([data-cursor-sidebar="expanded"]) > [data-testid="app-nav-rail"] {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  width: 100%;
+  min-height: 0;
+  max-height: 42svh;
+  background: transparent;
+}
+
+:where([data-cursor-sidebar="expanded"]) [aria-label="Primary navigation"] {
+  padding: 0.5rem;
+}
+
+:where([data-cursor-sidebar="expanded"])
+  [aria-label="Primary navigation"]
+  > div {
+  align-items: stretch;
+  gap: 0.125rem;
+}
+
+:where([data-cursor-sidebar="expanded"]) .cursor-sidebar-nav-button {
+  width: 100%;
+  height: 2rem;
+  justify-content: flex-start;
+  gap: 0.625rem;
+  padding-inline: 0.5rem;
+  font-weight: 400;
+}
+
+:where([data-cursor-sidebar="expanded"]) .cursor-sidebar-nav-label {
+  display: block;
+}
+
+:where([data-cursor-sidebar="expanded"])
+  > [data-testid="nav-rail-sidebar-body"] {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  min-height: 0;
+  border: 0;
+  border-radius: 0;
+  clip-path: inset(0 -6px 0 0);
+  background: transparent;
+  box-shadow: none;
+}
+
+:where([data-cursor-sidebar="expanded"])
+  > [data-sidebar="collapsible-body"]
+  > div {
+  width: 100% !important;
+}
+
+:where([data-cursor-sidebar="expanded"])
+  [data-testid="app-sidebar-top-reserve-row"] {
+  margin-top: 0;
+  border-top: 1px solid var(--border-seam);
+}
+
+:where([data-cursor-sidebar="expanded"]) > [data-cursor-sidebar-footer-rail] {
+  grid-column: 1;
+  grid-row: 3;
+  background: transparent;
+  border-top: 1px solid var(--border-seam);
+}
+
+:where([data-cursor-sidebar="expanded"]) > [data-testid="sidebar-footer-body"] {
+  grid-column: 2;
+  grid-row: 3;
+  border: 0;
+  border-top: 1px solid var(--border-seam);
+  border-radius: 0;
+  clip-path: inset(0 -6px 0 0);
+  background: transparent;
+  box-shadow: none;
+}
+
+:where([data-cursor-sidebar="expanded"])
+  [data-cursor-sidebar-footer-rail]
+  .cursor-sidebar-nav-button {
+  width: var(--bb-sidebar-control-size);
+  justify-content: center;
+  padding: 0;
+}
+
+:where([data-cursor-sidebar="expanded"])
+  [data-cursor-sidebar-footer-rail]
+  .cursor-sidebar-nav-label {
+  display: none;
+}
+
+@media (pointer: coarse) {
+  :where([data-cursor-sidebar="expanded"]) .cursor-sidebar-nav-button {
+    min-height: 2.75rem;
+  }
+}
